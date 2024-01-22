@@ -127,9 +127,15 @@ public class GameOfLife {
 		int count=0;
 		if (i>0&& j>0){
 		count=board[i-1][j]+board[i+1][j]+board[i][j+1]+board[i][j-1]+board[i-1][j-1]+board[i+1][j-1]+board[i-1][j+1]+board[i+1][j+1];
+		}else if (i==0 &&j>0){
+		 count=board[i+1][j]+board[i][j+1]+board[i][j-1]+board[i+1][j-1]+board[i+1][j+1];
+		}else if(i>0&&j==0){
+		 count=board[i-1][j]+board[i+1][j]+board[i][j+1]+board[i-1][j+1]+board[i+1][j+1];
 		}
+
 		return count;
 	}
+	
 	
 	// Prints the board. Alive and dead cells are printed as 1 and 0, respectively.
     public static void print(int[][] arr) {
