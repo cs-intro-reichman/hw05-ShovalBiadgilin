@@ -146,7 +146,7 @@ public class GameOfLife {
 		int [][] board=arr;
 		for (int i=1; i<board.length-1;i++){
 			for (int j=1; j<board[i].length-1;j++){ 
-			 System.out.printf("%2d ", board[i][j]);
+			 System.out.printf("%3d ", board[i][j]);
 
 			}
 			System.out.println();
