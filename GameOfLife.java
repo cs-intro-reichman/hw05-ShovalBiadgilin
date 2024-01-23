@@ -128,18 +128,32 @@ public class GameOfLife {
 	// Assumes that j is at least 1 and at most the number of columns in the board - 1. 
 	public static int count(int[][] board, int i, int j) {
 		int count=0;
-		if (i>0&& j>0){
-		count=board[i-1][j]+board[i+1][j]+board[i][j+1]+board[i][j-1]+board[i-1][j-1]+board[i+1][j-1]+board[i-1][j+1]+board[i+1][j+1];
-		}else if (i==0 &&j>0){
+		int row= board.length-1;
+		int cols= board[i].length-1;
+		if (i>0&& j>0 && i<row && j<cols){
+		 count=board[i-1][j]+board[i+1][j]+board[i][j+1]+board[i][j-1]+board[i-1][j-1]+board[i+1][j-1]+board[i-1][j+1]+board[i+1][j+1];
+		}else if (i==0 &&j>0 && j<cols){
 		 count=board[i+1][j]+board[i][j+1]+board[i][j-1]+board[i+1][j-1]+board[i+1][j+1];
-		}else if(i>0&&j==0){
+		}else if(i>0&&j==0 && i<row){
 		 count=board[i-1][j]+board[i+1][j]+board[i][j+1]+board[i-1][j+1]+board[i+1][j+1];
 		}else if (i==0&&j==0){ 
 		  count = board[i + 1][j + 1] + board[i][j + 1] + board[i + 1][j];
+		}else if (i==row && j==0){
+			count = board[i-1][j] + board[i-1][j+1] + board[i][j+1];
+		}else if (i==0 && j==cols){ 
+		   count= board[i + 1][j] + board[i+1][j-1] + board[i][j-1];
+		}else if (i==row && j> 0 && j< cols){ 
+		   count = board[i][j-1] + board[i-1][j-1] + board[i-1][j]+ board [i-1][j+1]+ board[i][j+1];
+		}else if (i==row && j ==cols) { 
+		   count = board[i][j-1] + board[i-1][j- 1] + board[i-1][j];
+		}else if (i>0 && i<row && j==cols){
+			count=board[i + 1][j] + board[i][j-1] + board[i + 1][j-1]+ board[i-1][j-1] + board[i-1][j];
 		}
 
 		return count;
 	}
+	
+
 	
 	// Prints the board. Alive and dead cells are printed as 1 and 0, respectively.
     public static void print(int[][] arr) {
